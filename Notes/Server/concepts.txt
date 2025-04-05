@@ -1,0 +1,32 @@
+💡 Think of your .NET web app like a restaurant:
+✨ app.UseRouting → sets up the menu system, so the restaurant knows what dishes (routes) to serve.
+
+✨ app.UseHttpsRedirection() → politely tells customers to use the secure entrance (HTTPS) instead of the regular door (HTTP).
+
+🧵 Why your app works without them:
+You're using minimal APIs, like this:
+
+app.MapGet("/weatherforecast", ...);
+Minimal APIs are like a tiny restaurant that:
+
+Only serves one dish (a single route). Already knows where the kitchen is.
+
+Doesn’t need a menu or redirection to work.
+
+So even without:
+
+
+// app.UseRouting();
+// app.UseHttpsRedirection();
+👉 It still serves that one dish (/weatherforecast) just fine!
+
+✅ When you'll need those lines?
+If later you build something bigger like:
+
+app.UseRouting();
+app.UseEndpoints(endpoints => {
+    endpoints.MapControllers();
+});
+
+or use MVC/Controllers — then routing becomes essential!
+

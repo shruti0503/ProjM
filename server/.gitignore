@@ -1,0 +1,32 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+.vscode/
+*.user
+*.suo
+
+# Logs
+Logs/
+*.log
+
+# Environment & secrets
+.env
+secrets.json
+
+# ASP.NET Core settings
+appsettings.Development.json
+appsettings.Local.json
+
+# Dotnet tools
+.nuget/
+*.nupkg
+
+# VS/IDE stuff
+*.dbmdl
+*.pidb
+*.userprefs
+
+# Others
+*.DS_Store

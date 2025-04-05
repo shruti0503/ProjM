@@ -1,0 +1,36 @@
+1. Only one compilation unit can have top-level statements
+Means: In your .NET project, only one file can have top-level statements (code not inside a class/method).
+
+If you already have this in Program.cs:
+
+var builder = WebApplication.CreateBuilder(args);
+
+
+2.IServiceCollection' does not contain a definition for 'AddSwaggerGen' and no accessible extension 
+method 'AddSwaggerGen' accepting a first argument of type 'IServiceCollection' could 
+be found (are you missing a using directive or an assembly reference?)
+
+
+
+That error means you're trying to use AddSwaggerGen() but haven’t added the required Swagger NuGet package or using directive.
+
+✅ Fix in 2 Steps:
+1. Install the Swagger Package
+Run this in your server folder:
+
+dotnet add package Swashbuckle.AspNetCore
+
+2. Add the Missing Using
+At the top of your Program.cs or wherever you're calling AddSwaggerGen():
+
+//
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+✨ Example Setup
+
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+});

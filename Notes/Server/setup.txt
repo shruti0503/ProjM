@@ -1,0 +1,32 @@
+Program.cs
+serilog  -> for logging
+, Microsoft.Extensions.DependencyInjection 
+, Microsoft.OpenApi.Models for
+
+adding servicers -> swagger , and api documentation 
+
+
+🟢 var builder = WebApplication.CreateBuilder(args);
+⚪️ Starts building your web app (loads settings, sets up DI, logging, etc.).
+
+📜 Setup Serilog Logger
+
+var logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .CreateLogger();
+Creates a Serilog logger using settings from appsettings.json.
+
+⚪️ Adds extra context to logs (like request info).
+
+🔄 Replace Default Logger with Serilog
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+
+⚪️ Removes built-in .NET loggers.
+⚪️ Uses Serilog instead for structured logging.
+
+
+➡️ Swagger
+Swagger is a tool that automatically generates interactive API documentation for your backend.
